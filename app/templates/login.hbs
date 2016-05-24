@@ -1,0 +1,28 @@
+<div class="ui two column middle aligned centered grid">
+    {{#if session.isWorking}}
+    <div class="column center aligned">
+        <div class="ui">
+            <div class="ui active inverted dimmer">
+                <div class="ui small text loader">One second while we get you signed in...</div>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    {{#if error}}
+    <div class="ui negative message">
+        <div class="header">
+            Oops, problem with logging in
+        </div>
+        <p>
+            {{error}}
+        </p>
+    </div>
+    {{/if}}
+
+    <div class="column center aligned">
+        <button class="ui big blue labeled icon button" {{action 'signin'}}>
+            <i class="sign in icon"></i>Sign In with ArcGIS Online
+        </button>
+    </div>
+    {{/if}}
+</div>

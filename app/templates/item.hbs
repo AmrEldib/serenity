@@ -1,0 +1,59 @@
+<div>
+	<!--Thumbnail-->
+	{{#if model.thumbnail}}
+	<img class="ui medium right floated bordered rounded image" src="{{model.thumbnailUrl}}">
+	{{/if}}
+	<!--Title-->
+	<h1 class="ui header">{{model.title}}</h1>
+	<!--Item type, Owner, Created Date, Last Modified Date-->
+	<p class="meta"><b>{{model.type}}</b> by <b>{{model.owner}}</b>. Created on <span title="{{moment-format model.created}}"><b>{{moment-format model.created 'LL'}}</b></span> and last modified <span title="{{moment-format model.modified}}"><b>{{moment-format model.modified 'LL'}}</b></span></p>
+
+	<!--Snippet-->
+	<p>
+		{{model.snippet}}
+	</p>
+
+	<!--Tags-->
+	<div class="ui green small labels">
+		{{#each model.tags as |tag|}}
+		<span class="ui label">{{tag}}</span>
+		{{/each}}
+	</div>
+
+	<!--Number of views-->
+	<div class="ui small blue label" title="{{model.numViews}} views">
+		<i class="unhide icon"></i>
+		{{model.numViews}}
+	</div>
+
+	<!--Average Rating, Number of Ratings-->
+	{{#if model.numRatings}}
+	<div class="ui star rating" data-max-rating="5" data-rating="{{model.rating}}" title="{{model.avgRating}} average rating"></div> out of {{model.numRatings}} rating(s).
+	{{else}}
+	<span class="meta">Not rated</span>
+	{{/if}}
+
+	<!--Comments-->
+	{{#if model.commentsEnabled}}
+	<div class="ui small blue label" title="{{model.numComments}} comments">
+		<i class="comments icon"></i>
+		{{model.numComments}}
+	</div>
+	{{else}}
+	<i class="small icons" title="Comments disabled">
+		<i class="disabled comments icon"></i>
+		<i class="corner ban icon"></i>
+	</i>
+	{{/if}}
+</div>
+<div class="ui divider"></div>
+<!--Description-->
+{{#if model.description}}
+<h3 class="ui header">Description</h3>
+<p>{{{model.description}}}</p>
+{{/if}}
+<!--Comments-->
+{{#if model.numComments}}
+<h3 class="ui header">Comments</h3>
+<!--Load comments to page-->
+{{/if}}

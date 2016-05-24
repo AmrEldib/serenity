@@ -1,7 +1,6 @@
 # Serenity
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Front-end client for ArcGIS Online written in Ember.js
 
 ## Prerequisites
 

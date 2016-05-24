@@ -1,0 +1,50 @@
+<div class="ui one column grid">
+    
+    <div class="one column row">
+        <div class="right aligned column">
+            <!--
+            <div class="ui buttons">
+                <button class="ui button" id="btnGridLayout"><i class="grid layout icon"></i></button>
+                <button class="ui button" id="btnListLayout"><i class="list layout icon"></i></button>
+            </div>
+            -->
+        </div>
+    </div>
+    
+    <div class="gridItemContainer ui items">
+        {{#each model.items as |item|}}
+        <div class="gridItem item">
+            {{#if item.thumbnailUrl}}
+            <div class="gridItemThumbnail ui medium rounded image">
+                <div class="gridItemThumbnailLabel ui small ribbon blue label">
+                    {{item.type}}
+                </div>
+                <img src="{{item.thumbnailUrl}}">
+            </div>
+            {{/if}}
+            <div class="content">
+                <div class="header">{{item.title}}</div>
+                <div class="meta">
+                    <span title="Owned by">{{item.owner}}</span>
+                </div>
+                <div class="description">
+                    {{item.snippet}}
+                </div>
+                <div class="extra">
+                    <span title="Last modified: {{moment-format item.modified}}" class="right floated">
+                        {{moment-from-now item.modified}}
+                    </span>
+                    <span>
+                        {{#link-to "item" item.id}}<i title="More Info" class="info icon"></i>{{/link-to}}
+                        {{#if item.isPrivate}}
+                        <i title="Not shared" class="lock icon"></i>
+                        {{else}}
+                        <i title="Shared" class="unlock icon"></i>
+                        {{/if}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
