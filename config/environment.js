@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'serenity',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -18,16 +18,6 @@ module.exports = function(environment) {
       // when it is created
       AgolRestEndpoint: 'https://www.arcgis.com/sharing/rest/content/',
       portalBaseUrl: 'https://www.arcgis.com'
-    },
-    
-    torii:{
-      sessionServiceName: 'session',
-      providers: {
-        'arcgis-oauth-bearer': {
-          apiKey: 'oqKL6es0VrspTpEw',
-          portalUrl: 'https://arcgis.com' //optional - defaults to https://arcgis.com
-        }
-      }
     }
   };
 
@@ -37,6 +27,15 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.torii = {
+      sessionServiceName: 'session',
+      providers: {
+        'arcgis-oauth-bearer': {
+          apiKey: 'oqKL6es0VrspTpEw',
+          portalUrl: 'https://arcgis.com' //optional - defaults to https://arcgis.com
+        }
+      }
+    }
   }
 
   if (environment === 'test') {
@@ -52,7 +51,15 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.torii = {
+      sessionServiceName: 'session',
+      providers: {
+        'arcgis-oauth-bearer': {
+          apiKey: 'TlUvU2mdC69zOrPr',
+          portalUrl: 'https://arcgis.com' //optional - defaults to https://arcgis.com
+        }
+      }
+    }
   }
 
   return ENV;
