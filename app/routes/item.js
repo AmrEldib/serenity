@@ -30,7 +30,7 @@ export default Ember.Route.extend({
 					item.thumbnailUrl = host + "items/" + item.id + "/info/" + item.thumbnail + "?token=" + token;
 				}
 				else {
-					item.thumbnailUrl = "/assets/img/blankthumbnail.png";
+					item.thumbnailUrl = "assets/img/blankthumbnail.png";
 				}
 				Ember.run(null, resolve, item);
 			}, function(jqXHR) {
