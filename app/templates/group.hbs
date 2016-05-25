@@ -1,0 +1,43 @@
+<div>
+	
+	<!--Title-->
+	<h1 class="ui header">{{model.title}}</h1>
+	<!--Item type, Owner, Created Date, Last Modified Date-->
+	<p class="meta"><b>{{model.type}}</b> by <b>{{model.owner}}</b>. Created on <span title="{{moment-format model.created}}"><b>{{moment-format model.created 'LL'}}</b></span> and last modified <span title="{{moment-format model.modified}}"><b>{{moment-format model.modified 'LL'}}</b></span></p>
+
+	<!--Snippet-->
+	<p>
+		{{model.snippet}}
+	</p>
+
+	<!--Tags-->
+	<div class="ui green small labels">
+		{{#each model.tags as |tag|}}
+		<span class="ui label">{{tag}}</span>
+		{{/each}}
+	</div>
+
+</div>
+<div class="ui divider"></div>
+<table class="ui very basic collapsing celled table">
+  <tbody>
+    <tr>
+      <td>
+        <h4 class="ui image header">
+          <img src="https://www.arcgis.com/sharing/rest/community/users/{{model.userMembership.username}}/info/{{session.content.currentUser.thumbnail}}?token={{session.content.token}}" class="ui mini rounded image">
+          <div class="content">
+            {{model.userMembership.username}}
+			<div class="sub header">{{model.userMembership.memberType}}</div>
+          </div>
+      </h4>
+	  </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="ui divider"></div>
+<!--Description-->
+{{#if model.description}}
+<h3 class="ui header">Description</h3>
+<p>{{{model.description}}}</p>
+{{/if}}

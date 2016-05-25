@@ -7,7 +7,7 @@ export default Ember.Route.extend({
 	buildURL: function(id) {
 		var session = this.get('session');
 		this.token = this.session.content.token;
-		return this.host + "items/" + id + "?f=json&token=" + this.session.content.token;
+		return this.host + "sharing/rest/content/items/" + id + "?f=json&token=" + this.session.content.token;
 	},
 
 	model: function(params) {
@@ -27,7 +27,7 @@ export default Ember.Route.extend({
 				item.rating = Math.round(item.avgRating);
 				// thumbnail
 				if (item.thumbnail) {
-					item.thumbnailUrl = host + "items/" + item.id + "/info/" + item.thumbnail + "?token=" + token;
+					item.thumbnailUrl = host + "sharing/rest/content/items/" + item.id + "/info/" + item.thumbnail + "?token=" + token;
 				}
 				else {
 					item.thumbnailUrl = "assets/img/blankthumbnail.png";

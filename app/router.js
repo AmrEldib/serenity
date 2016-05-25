@@ -9,6 +9,8 @@ Router.map(function() {
   this.route('login');
   this.authenticatedRoute('items');
   this.authenticatedRoute('item', { path: '/items/:item_id'});
+  this.authenticatedRoute('groups');
+  this.authenticatedRoute('group', { path: '/groups/:group_id'});
 });
 
 export default Router;

@@ -7,7 +7,7 @@ export default Ember.Route.extend({
 	buildURL: function() {
 		let session = this.get('session');
         this.token = this.session.content.token;
-		return this.host + "sharing/rest/content/users/" + this.session.content.currentUser.username + "?f=json&token=" + this.session.content.token;
+		return this.host + "sharing/rest/community/self/?f=json&token=" + this.session.content.token;
 	},
 
 	model: function() {
@@ -16,21 +16,23 @@ export default Ember.Route.extend({
 		let host = this.host;
 		return new Ember.RSVP.Promise(function(resolve, reject) {
 			Ember.$.getJSON(url).then(function(data) {
-				data.items.forEach(function(item){
+                data.groups.forEach(function(group){
 					// access
-					if (item.access==="private") {
-						item.isPrivate = true;
+					if (group.access==="private") {
+						group.isPrivate = true;
 					}
 					else {
-						item.isPrivate = false;
+						group.isPrivate = false;
 					}
+                    /*
 					// thumbnail
 					if (item.thumbnail) {
-						item.thumbnailUrl = host + "sharing/rest/content/items/" + item.id + "/info/" + item.thumbnail + "?token=" + token;
+						item.thumbnailUrl = host + "items/" + item.id + "/info/" + item.thumbnail + "?token=" + token;
 					}
 					else {
 						item.thumbnailUrl = "assets/img/blankthumbnail.png";
 					}
+                    */
 				});
 				Ember.run(null, resolve, data);
 			}, function(jqXHR) {

@@ -16,7 +16,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      AgolRestEndpoint: 'https://www.arcgis.com/sharing/rest/content/',
+      AgolRestEndpoint: 'https://www.arcgis.com/',
       portalBaseUrl: 'https://www.arcgis.com'
     }
   };
